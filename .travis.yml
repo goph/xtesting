@@ -22,4 +22,4 @@ before_install: curl https://raw.githubusercontent.com/golang/dep/master/install
 
 install: dep ensure
 
-script: go test
+script: go test ./...
