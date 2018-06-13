@@ -20,7 +20,7 @@ func RowExists(t *testing.T, db rowQueryer, query string, args ...interface{}) b
 
 	var exists bool
 
-	query = fmt.Sprintf("SELECT exists (%s)", query)
+	query = fmt.Sprintf("SELECT exists (%s)", query) // nolint
 
 	err := db.QueryRow(query, args...).Scan(&exists)
 
