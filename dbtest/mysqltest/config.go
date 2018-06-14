@@ -82,6 +82,10 @@ func (p DsnParams) String() string {
 	var query string
 
 	for key, value := range p {
+		if query != "" {
+			query += "&"
+		}
+
 		query += key + "=" + value
 	}
 
