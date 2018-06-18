@@ -9,5 +9,5 @@ func PrepareConfig(e *env.EnvVarSet, config *Config) {
 	e.StringVar(&config.User, "db-user", "root", "Database user")
 	e.StringVar(&config.Pass, "db-pass", "", "Database password")
 	e.StringVar(&config.Name, "db-name", "", "Database name")
-	e.Var(&config.Params, "db-params", "Database params")
+	e.QueryStringVar(&config.Params, "db-params", map[string]string{}, "Database params")
 }

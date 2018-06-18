@@ -2,7 +2,6 @@ package mysqltest
 
 import (
 	"fmt"
-	"strings"
 
 	"github.com/pkg/errors"
 )
@@ -15,7 +14,7 @@ type Config struct {
 	Pass string
 	Name string
 
-	Params DsnParams
+	Params map[string]string
 }
 
 // Validate checks that the configuration is valid.
@@ -44,7 +43,17 @@ func (c Config) DSN() string {
 	var params string
 
 	if len(c.Params) > 0 {
-		params = "?" + c.Params.String()
+		var query string
+
+		for key, value := range c.Params {
+			if query != "" {
+				query += "&"
+			}
+
+			query += key + "=" + value
+		}
+
+		params = "?" + query
 	}
 
 	return fmt.Sprintf(
@@ -56,38 +65,4 @@ func (c Config) DSN() string {
 		c.Name,
 		params,
 	)
-}
-
-// DsnParams implements the common Value interface implemented by flag/pflag/env packages.
-type DsnParams map[string]string
-
-func (p DsnParams) Set(val string) error {
-	for _, v := range strings.Split(val, "&") {
-		param := strings.SplitN(v, "=", 2)
-		if len(param) != 2 {
-			continue
-		}
-
-		p[param[0]] = param[1]
-	}
-
-	return nil
-}
-
-func (DsnParams) Type() string {
-	return "query string"
-}
-
-func (p DsnParams) String() string {
-	var query string
-
-	for key, value := range p {
-		if query != "" {
-			query += "&"
-		}
-
-		query += key + "=" + value
-	}
-
-	return query
 }
