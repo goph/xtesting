@@ -10,6 +10,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 
+## [0.4.1] - 2018-06-25
+
+### Changed
+
+- Updated env dependency
+
+
 ## [0.4.0] - 2018-06-19
 
 ### Changed
@@ -39,7 +46,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial release
 
 
-[Unreleased]: https://github.com/goph/xtesting/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/goph/xtesting/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/goph/xtesting/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/goph/xtesting/compare/v0.3.1...v0.4.0
 [0.3.1]: https://github.com/goph/xtesting/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.com/goph/xtesting/compare/v0.2.0...v0.3.0
